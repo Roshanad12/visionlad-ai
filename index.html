@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISION LAD STUDIO AI – Futuristic AI Video Studio</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#00ff99;
+  --dark:#0b0f14;
+  --glass:rgba(255,255,255,0.05);
+  --shadow-glow:rgba(0,255,153,0.3);
+  --font:'Poppins',sans-serif;
+}
+
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:var(--font);
+  background:var(--dark);
+  color:#eaeaea;
+  line-height:1.7;
+  scroll-behavior:smooth;
+}
+a{text-decoration:none; color:inherit;}
+.container{width:90%; max-width:1200px; margin:auto; padding:80px 0; text-align:center;}
+h2{font-size:2.8rem; margin-bottom:50px; position:relative;}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(14px);
+  z-index:1000;
+}
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 25px;
+}
+.logo{
+  font-size:2rem;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:1px;
+}
+.nav-links{list-style:none; display:flex; gap:25px;}
+.nav-links a{
+  color:#fff;
+  opacity:0.85;
+  font-weight:500;
+  transition:0.3s;
+}
+.nav-links a:hover{color:var(--accent); opacity:1;}
+
+/* ===== HERO ===== */
+header{
+  position:relative;
+  padding:180px 20px;
+  background:radial-gradient(circle at center,#111,#000);
+  overflow:hidden;
+}
+header::before, header::after{
+  content:"";
+  position:absolute;
+  width:350px; height:350px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--accent),transparent);
+  opacity:0.15;
+}
+header::before{top:-80px; left:-80px; animation:move1 12s linear infinite alternate;}
+header::after{bottom:-80px; right:-80px; animation:move2 14s linear infinite alternate-reverse;}
+@keyframes move1{0%{transform:translate(0,0);}100%{transform:translate(40px,40px);}}
+@keyframes move2{0%{transform:translate(0,0);}100%{transform:translate(-40px,-30px);}}
+
+header h1{font-size:3.8rem; position:relative; z-index:1; animation:fadeUp 1s ease;}
+header p{max-width:700px; margin:25px auto; opacity:0.9; position:relative; z-index:1; animation:fadeUp 1.3s ease;}
+.btn{
+  display:inline-block; margin-top:25px; padding:18px 45px;
+  background:var(--accent); color:#000; font-weight:800; border-radius:14px;
+  box-shadow:0 0 40px var(--shadow-glow);
+  position:relative; z-index:1;
+  animation:fadeUp 1.6s ease;
+  transition:0.3s;
+}
+.btn:hover{background:#00cc77; transform:scale(1.05);}
+
+/* ===== GLASS CARD ===== */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 20px 50px var(--shadow-glow);
+  padding:30px;
+  transition:0.4s;
+}
+.glass:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 30px 60px var(--shadow-glow);
+}
+
+/* ===== SERVICES ===== */
+.service-items{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+.service{width:260px; font-weight:500;}
+
+/* ===== PORTFOLIO ===== */
+.portfolio-slider{
+  max-width:850px; margin:auto; overflow:hidden; border-radius:20px; box-shadow:0 20px 50px rgba(0,255,153,0.2);
+}
+.portfolio-slider img{width:100%; display:none; border-radius:20px; transition:0.5s;}
+.portfolio-slider img:hover{transform:scale(1.02);}
+
+/* ===== WHY CHOOSE US ===== */
+.features{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.feature{
+  width:250px;
+  font-size:1.1rem;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.testimonial span{display:block; margin-top:12px; font-weight:700; color:var(--accent);}
+.stars{color:var(--accent); margin-top:8px; font-size:1.1rem;}
+
+/* ===== PRICING ===== */
+.pricing-cards{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.card{width:240px;}
+.price{font-size:1.5rem;font-weight:800;color:var(--accent); margin-top:12px;}
+
+/* ===== FAQ ===== */
+.faq{max-width:800px; margin:auto; text-align:left;}
+.faq-item{margin-bottom:15px;}
+.faq-item button{
+  width:100%; background:var(--glass); border:none; padding:15px 20px;
+  font-size:1rem; font-weight:600; color:#fff; cursor:pointer; border-radius:12px; text-align:left;
+}
+.faq-item p{display:none; padding:15px 20px; font-weight:400; color:#ddd;}
+
+/* ===== NEWSLETTER ===== */
+.newsletter input{
+  padding:15px 20px; border-radius:12px; border:none; width:250px; margin-right:10px;
+}
+.newsletter button{
+  padding:15px 25px; border-radius:12px; border:none; background:var(--accent); color:#000; font-weight:700; cursor:pointer;
+  transition:0.3s;
+}
+.newsletter button:hover{background:#00cc77;}
+
+/* ===== CONTACT ===== */
+#contact a{color:var(--accent); font-weight:700;}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{0%{opacity:0; transform:translateY(30px);}100%{opacity:1; transform:translateY(0);}}
+
+@media(max-width:768px){
+  header h1{font-size:2.6rem;}
+  .nav-links{flex-direction:column; gap:10px;}
+  .service-items,.features,.testimonials,.pricing-cards{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">VISIONLAB<span style="color:var(--accent)">AI</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#whyus">Why Us</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header>
+  <h1>AI-Powered Video Editing Studio</h1>
+  <p>Transform your raw footage into viral reels, cinematic shorts, and premium videos using advanced AI tools.</p>
+  <a class="btn" href="https://wa.me/9779868849732">Start a Project</a>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2>About REELMIND AI</h2>
+    <p>Next-generation AI video editing studio. We help creators & brands scale content with cinematic effects, smart cuts, and viral-ready edits.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2>Our AI Services</h2>
+    <div class="service-items">
+      <div class="service glass">AI Reels & Shorts Editing</div>
+      <div class="service glass">Auto Subtitles & Captions</div>
+      <div class="service glass">Smart Cut & Cleanup</div>
+      <div class="service glass">Cinematic VFX & Motion</div>
+      <div class="service glass">4K–8K AI Upscaling</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <h2>Portfolio Demo</h2>
+    <div class="portfolio-slider glass">
+      <img src="<img src="img/portfolio1.jpg" alt="Demo 1">
+      <img src="<img src="img/portfolio2.jpg" alt="Demo 2">
+  
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="whyus">
+  <div class="container">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature glass">⚡ Fast Delivery</div>
+      <div class="feature glass">🤖 AI-Powered Workflow</div>
+      <div class="feature glass">🎬 Cinematic Quality</div>
+      <div class="feature glass">📈 Performance-Driven Edits</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <h2>Client Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial glass">
+        “Our engagement grew 4× in 1 week!”
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <span>— IG Creator</span>
+      </div>
+      <div class="testimonial glass">
+        “Feels like a premium AI agency.”
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <span>— Brand Owner</span>
+      </div>
+      <div class="testimonial glass">
+        “Fast, clean, cinematic edits.”
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <span>— YouTuber</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-cards">
+      <div class="card glass"><h3>Basic</h3><p class="price">USA $12</p></div>
+      <div class="card glass"><h3>Pro</h3><p class="price">USD $20</p></div>
+      <div class="card glass"><h3>Studio</h3><p class="price">USD $30</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item glass">
+        <button>How fast can you deliver?</button>
+        <p>Usually within 24–48 hours depending on video length and complexity.</p>
+      </div>
+      <div class="faq-item glass">
+        <button>Do you offer revisions?</button>
+        <p>Yes! Every plan includes revisions until you are fully satisfied.</p>
+      </div>
+      <div class="faq-item glass">
+        <button>What formats do you support?</button>
+        <p>MP4, MOV, and all standard formats optimized for social media.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="container">
+    <h2>Subscribe for AI Editing Tips</h2>
+    <div class="newsletter glass">
+      <input type="email" placeholder="Your email">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>📍 Based in Nepal – Serving Worldwide</p>
+    <p>📱 WhatsApp: <a href="https://wa.me/9779868849732">Chat Now</a></p>
+    <p>📧 Email: roshanad346@gmail.com</p>
+    <p>⚡ Response Time: Under 2 Hours</p>
+    <p>© 2026 REELMIND AI</p>
+  </div>
+</section>
+
+<!-- PORTFOLIO SLIDER JS -->
+<script>
+let index=0;
+const slides=document.querySelectorAll(".portfolio-slider img");
+function showSlide(i){slides.forEach(s=>s.style.display="none");slides[i].style.display="block";}
+showSlide(index);
+setInterval(()=>{index=(index+1)%slides.length;showSlide(index);},3000);
+
+// FAQ Toggle
+document.querySelectorAll(".faq-item button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const p = btn.nextElementSibling;
+    p.style.display = p.style.display === "block" ? "none" : "block";
+  });
+});
+</script>
+
+<!-- FLOATING WHATSAPP CTA -->
+<a href="https://wa.me/9779868849732" style="
+position:fixed;
+bottom:25px;
+right:25px;
+background:var(--accent);
+padding:18px 22px;
+border-radius:50px;
+box-shadow:0 0 40px var(--shadow-glow);
+color:#000;
+font-weight:700;
+z-index:10000;
+text-decoration:none;
+">💬 WhatsApp</a>
+
+</body>
+</html>
